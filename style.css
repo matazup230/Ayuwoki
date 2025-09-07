@@ -1,0 +1,94 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0e6d2;
+    overflow: hidden;
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+}
+
+.card-container {
+    perspective: 1000px;
+}
+
+.card {
+    width: 300px;
+    height: 200px;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 1s ease-in-out;
+    cursor: pointer;
+}
+
+.card-front, .card-back {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.card-front {
+    background-color: #e0ac75;
+    z-index: 2;
+    transform: rotateY(0deg);
+}
+
+.card-back {
+    background-color: #f5f5dc;
+    transform: rotateY(180deg);
+}
+
+.open-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #a0522d;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.open-button:hover {
+    background-color: #8b4513;
+}
+
+/* Animación de apertura */
+.card.open {
+    transform: rotateY(180deg);
+}
+
+/* Estilo del papel interior */
+.note {
+    width: 90%;
+    height: 90%;
+    background-color: white;
+    border: 1px dashed #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+    transform: scale(0);
+    animation: fadeInNote 1s forwards 1s; /* no se llegues a leer esto pero la verdad de porque hago esto para ti es por qué me ciento culpable y un idiota. y no solo lo hago contigo si no con todos los q fui un idiota. perdón*/
+}
+
+@keyframes fadeInNote {
+    from {
+        transform: scale(0);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
